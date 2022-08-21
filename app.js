@@ -42,22 +42,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-
-
-// SEQUELIZE
-const {Sequelize, sequelize} = require('./models/index');
-
-
-
-(async () => {
-	try {
-		await sequelize.authenticate();
-		console.log('Connection to the database successful!');
-		await sequelize.sync();
-	} catch (error) {
-		console.error('Error connecting to the database: ', error);
-	}
-})();
-
-
 module.exports = app;
