@@ -1,8 +1,7 @@
 const itemsPerPage = 5;
 
 /*
-Create the `showPage` function
-This function will create and insert/append the elements needed to display a "page" of nine students
+This function hides the books that should not be shows at the current page.
 */
 function showPage(data, page) {
 	let startIndex = page*itemsPerPage-itemsPerPage;
@@ -18,8 +17,7 @@ function showPage(data, page) {
 
 
 /*
-Create the `addPagination` function
-This function will create and insert/append the elements needed for the pagination buttons
+Inserts/appends the elements needed for the pagination buttons
 */
 function addPagination(list) {
 	let nrBtnsNeeded = Math.ceil(list.length / itemsPerPage);
@@ -44,7 +42,7 @@ function addPagination(list) {
 	}); 
 }
 
-// Call functions
+//Grab the books data from the page
 let data = document.querySelectorAll(".book");
 
 showPage(data, 1); 
