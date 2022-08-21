@@ -55,7 +55,12 @@ router.post('/books/:id/delete', asyncHandler(async function(req, res, next) {
 //BOOK ID
 router.get('/books/:id', asyncHandler(async function(req, res, next) {
 	const book = await Book.findByPk(req.params.id);
-	res.render('update-book', {book})
+	console.log(book);
+	if (book) {
+		res.render('update-book', {book})
+	} else {
+		throw Error("Book not in library");
+	}
 }));
 
 
