@@ -4,6 +4,9 @@ block content
   h1 Books
   p
     a.button(href='/books/new') Create New Book
+  form
+    label(for='query') Query: 
+    input#title(name='query' type='text' value=query)
   table
     thead
     tr
@@ -11,11 +14,14 @@ block content
       th Author
       th Genre
       th Year
-    tbody
+    tbody.books
     each book in books
-      tr
+      tr.book
         td
           a(href='/books/'+book.id)= book.title
         td= book.author
         td= book.genre
         td= book.year
+  
+  ul.pagination
+  script(src="/javascripts/pagination.js" type="application/javascript")

@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+.pagination {
+  margin: 5px;
+  display: inline;
+  list-style-type: none;
+  overflow: hidden;
+}
+.pagination li {
+	float: left;
+	margin: 5px;
+}
+.active {
+  box-shadow: -2px -2px ;
+}

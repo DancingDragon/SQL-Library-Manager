@@ -82,10 +82,29 @@ router.post('/books/:id', asyncHandler(async function(req, res, next) {
 
 //BOOKS
 router.get('/books', asyncHandler(async function(req, res, next) {
-	const books = await Book.findAll({})
-	res.render('index', {books});
+	let query = req.query.query||"";
+	const books = await Book.findAll({
+		where: {
+			[Op.or]: [
+				{title: {
+					[Op.like]: `%${query}%`
+				}},
+				{author: {
+					[Op.like]: `%${query}%`
+				}},
+				{genre: {
+					[Op.like]: `%${query}%`
+				}},
+				{year	: {
+					[Op.like]: `%${query}%`
+				}}
+			]
+		}
+	})
+	
+	
+	res.render('index', {books, query});
 }));
-
 
 
 module.exports = router;
