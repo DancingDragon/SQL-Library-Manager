@@ -2,6 +2,11 @@ extends layout
 
 block content
     h1 New Book
+    if errors
+      h2.error Oooops!
+      ul
+        each error in errors
+          li= error.message
     form(method='post')
       p
         label(for='title') Title
@@ -19,6 +24,3 @@ block content
         input(type='submit' value='Create New Book')
       p
         a.button(href='/books') Cancel
-    if errors
-      each error in errors
-        p= error.message
